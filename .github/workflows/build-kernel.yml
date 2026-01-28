@@ -107,9 +107,9 @@ jobs:
                 tar -C gcc-64/ -zxvf gcc-64.tar.gz
                 rm gcc-64.tar.gz
             elif [[ ${{ env.GCC_64_SOURCE }} == *'.tar.xz' ]]; then
-                wget -nv -O gcc-64.xz ${{ env.GCC_64_SOURCE }}
+                wget -nv -O gcc-64.tar.xz ${{ env.GCC_64_SOURCE }}
                 mkdir gcc-64
-                tar -C gcc-64/ -Jxvf gcc-64.xz
+                tar -C gcc-64/ -Jxvf gcc-64.tar.xz
                 rm gcc-64.tar.xz
             elif [[ ${{ env.GCC_64_SOURCE }} == *'.tar.zst' ]]; then
                 wget -nv -O gcc-64.tar.zst ${{ env.GCC_64_SOURCE }}
@@ -135,9 +135,9 @@ jobs:
                 tar -C gcc-32/ -zxvf gcc-32.tar.gz
                 rm gcc-32.tar.gz
             elif [[ ${{ env.GCC_32_SOURCE }} == *'.tar.xz' ]]; then
-                wget -nv -O gcc-32.xz ${{ env.GCC_32_SOURCE }}
+                wget -nv -O gcc-32.tar.xz ${{ env.GCC_32_SOURCE }}
                 mkdir gcc-32
-                tar -C gcc-32/ -Jxvf gcc-32.xz
+                tar -C gcc-32/ -Jxvf gcc-32.tar.xz
                 rm gcc-32.tar.xz
             elif [[ ${{ env.GCC_32_SOURCE }} == *'.tar.zst' ]]; then
                 wget -nv -O gcc-32.tar.zst ${{ env.GCC_32_SOURCE }}
