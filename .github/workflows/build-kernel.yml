@@ -97,7 +97,7 @@ jobs:
                 mv -f "$(find ./clang -mindepth 2 -maxdepth 2 -type d)"/* ./clang
             else
                 mv -f "$(find ./clang -mindepth 1 -maxdepth 1 -type d)"/* ./clang
-            endif
+            fi
         fi
 
     - name: Download GCC
@@ -133,7 +133,7 @@ jobs:
                     mv -f "$(find ./gcc-64 -mindepth 2 -maxdepth 2 -type d)"/* ./gcc-64
                 else
                     mv -f "$(find ./gcc-64 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-64
-                endif
+                fi
             fi
         fi
         if [ ${{ env.USE_GCC_32 }} = true ]; then
@@ -165,7 +165,7 @@ jobs:
                     mv -f "$(find ./gcc-32 -mindepth 2 -maxdepth 2 -type d)"/* ./gcc-32
                 else
                     mv -f "$(find ./gcc-32 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-32
-                endif
+                fi
             fi
         fi
 
@@ -309,7 +309,7 @@ jobs:
             make -j$(nproc --all) O=out ARCH=${{ env.KERNEL_ARCH }} ${{ env.EXTRA_CMDS }} ${DEVICE}_defconfig
         else
             make -j$(nproc --all) CC=clang O=out ARCH=${{ env.KERNEL_ARCH }} ${{ env.EXTRA_CMDS }} ${DEVICE}_defconfig
-        endif
+        fi
 
         if [ ${{ env.ENABLE_CCACHE }} = true ]; then
             if [ ${{ env.USE_GCC }} = true ]; then
