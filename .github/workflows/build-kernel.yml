@@ -93,7 +93,11 @@ jobs:
             unzip clang.zip -d clang/
         fi
         if [[ "$(find ./clang -mindepth 1 -maxdepth 1 -type d | wc -l)" == "1" ]]; then
-            mv -f "$(find ./clang -mindepth 1 -maxdepth 1 -type d)"/* ./clang
+            if [[ "$(find ./clang -mindepth 2 -maxdepth 2 -type d | wc -l)" == "1" ]]; then
+                mv -f "$(find ./clang -mindepth 2 -maxdepth 2 -type d)"/* ./clang
+            else
+                mv -f "$(find ./clang -mindepth 1 -maxdepth 1 -type d)"/* ./clang
+            endif
         fi
 
     - name: Download GCC
@@ -125,7 +129,11 @@ jobs:
                 rm gcc-64.zip
             fi
             if [[ "$(find ./gcc-64 -mindepth 1 -maxdepth 1 -type d | wc -l)" == "1" ]]; then
-                mv -f "$(find ./gcc-64 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-64
+                if [[ "$(find ./gcc-64 -mindepth 2 -maxdepth 2 -type d | wc -l)" == "1" ]]; then
+                    mv -f "$(find ./gcc-64 -mindepth 2 -maxdepth 2 -type d)"/* ./gcc-64
+                else
+                    mv -f "$(find ./gcc-64 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-64
+                endif
             fi
         fi
         if [ ${{ env.USE_GCC_32 }} = true ]; then
@@ -153,7 +161,11 @@ jobs:
                 rm gcc-32.zip
             fi
             if [[ "$(find ./gcc-32 -mindepth 1 -maxdepth 1 -type d | wc -l)" == "1" ]]; then
-                mv -f "$(find ./gcc-32 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-32
+                if [[ "$(find ./gcc-32 -mindepth 2 -maxdepth 2 -type d | wc -l)" == "1" ]]; then
+                    mv -f "$(find ./gcc-32 -mindepth 2 -maxdepth 2 -type d)"/* ./gcc-32
+                else
+                    mv -f "$(find ./gcc-32 -mindepth 1 -maxdepth 1 -type d)"/* ./gcc-32
+                endif
             fi
         fi
 
